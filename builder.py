@@ -22,19 +22,10 @@ app.connect(capabilities=capabilities,
 
 try:
 
-    generator = PageObjectGenerator()
-    recycler_explorer = PageObjectRecyclerExplorer(app)
-
-
+    page_object_explorer = PageObjectRecyclerExplorer(app)
+    page_object_explorer.explore("pages")
 
 except Exception as error:
-    print("STOP STOP STOP STOP STOP STOP STOP STOP STOP STOP STOP STOP STOP ")
     print(error)
 finally:
-    try:
-        app.disconnect()
-    except Exception as e:
-        if 'NoSuchSessionException' in str(e):
-            print("Disconnected.")
-        else:
-            raise
+    app.disconnect()
